@@ -13,7 +13,33 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     <script src="./scripts/index.js" defer></script>
 </head>
-<body>
-    
+<body class="page">
+    <div class="calculator">
+        <div class="calculator__display">
+            <div data-previous-operand class="calculator__previous-operand"></div>
+            <div data-current-operand class="calculator__current-operand"></div>
+        </div>
+        <div class="calculator__buttons">
+            <button data-all-clear class="calculator__button calculator__button_all-clear" type="button">AC</button>
+            <button data-operator class="calculator__button calculator__button_operator" type="button">&percnt;</button>
+            <button data-operator class="calculator__button calculator__button_operator" type="button">&divide;</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">7</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">8</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">9</button>
+            <button data-operator class="calculator__button calculator__button_operator" type="button">&times;</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">4</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">5</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">6</button>
+            <button data-operator class="calculator__button calculator__button_operator" type="button">&minus;</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">1</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">2</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">3</button>
+            <button data-operator class="calculator__button calculator__button_operator" type="button">&plus;</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">0</button>
+            <button data-number class="calculator__button calculator__button_number" type="button">&period;</button>
+            <button data-delete class="calculator__button calculator__button_number" type="button"><span class="material-symbols-outlined">backspace</span></button>
+            <button data-equals class="calculator__button calculator__button_equals" type="button">&equals;</button>
+        </div>
+    </div>
 </body>
 </html>
