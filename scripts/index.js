@@ -29,10 +29,8 @@ class Calculator {
             this.operator = operator;
             this.previousOperand = this.currentOperand;
             this.currentOperand = '';
-        } else {
-            if (this.previousOperand !== '') {
-                this.operator = operator;
-            }
+        } else if (this.previousOperand !== '') {
+            this.operator = operator;
         }
     }
 
@@ -60,7 +58,7 @@ class Calculator {
                 default:
                     return;
             }
-            this.currentOperand = result;
+            this.currentOperand = result.toString();
             this.operator = null;
             this.previousOperand = '';
         }
@@ -104,6 +102,13 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
+const convertOperator = key => {
+    return key === '-' ? '−'
+        : key === '*' ? '×'
+        : key === '/' ? '÷'
+        : key;
+};
+
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
@@ -131,4 +136,28 @@ allClearButton.addEventListener('click', () => {
 deleteButton.addEventListener('click', () => {
     calculator.delete();
     calculator.updateDisplay();
+});
+
+document.addEventListener('keydown', e => {
+    const operators = '+-*/%';
+    const code = e.code;
+    const key = e.key;
+
+    if ((key >= 0 && key <= 9) || key === '.') {
+        calculator.appendNumber(key);
+        calculator.updateDisplay();
+    } else if (key === 'Backspace') {
+        calculator.delete();
+        calculator.updateDisplay();
+    } else if (key === '=' || key === 'Enter') {
+        calculator.compute();
+        calculator.updateDisplay();
+    } else if (code === 'KeyC') {
+        calculator.clear();
+        calculator.updateDisplay();
+    } else if (operators.includes(key)) {
+        if (key === '/') e.preventDefault();
+        calculator.chooseOperator(convertOperator(key));
+        calculator.updateDisplay();
+    }
 });
